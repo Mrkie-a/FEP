@@ -1,0 +1,736 @@
+/* CSS Dynamic Application Properties Variables (Themes Layout Ecosystem Context) */
+:root {
+  --primary: #1a4f9c;
+  --primary-light: #2563eb;
+  --primary-soft: #dbeafe;
+  --accent: #ef4444;
+  --accent-soft: #fee2e2;
+  --highlight: #0ea5e9;
+  --highlight-soft: #e0f2fe;
+  --bg: #f0f4fb;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --success: #22c55e;
+  --radius: 16px;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  --transition: cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
+}
+
+body.theme-savings {
+  --primary: #166534;
+  --primary-light: #16a34a;
+  --primary-soft: #dcfce7;
+  --accent: #d97706;
+  --accent-soft: #fef3c7;
+  --highlight: #059669;
+  --highlight-soft: #d1fae5;
+  --bg: #f0fdf4;
+  --border: #bbf7d0;
+}
+
+/* Global Functional Standard Normalization Reset Core Rules */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* Base Master Application Wrapper Construction Viewports layout grid */
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+}
+
+/* Main Content Structural Block mapping layer adjustments */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0; /* Clear default grid compression flex child overflow bugs */
+}
+
+/* Sticky Structural Sidebar Design Panels Mapping Styles rules setup */
+.sidebar {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  height: fit-content;
+  position: sticky;
+  top: 24px;
+  z-index: 10;
+  transition: background var(--transition), border var(--transition);
+}
+
+.sidebar-title {
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.sidebar-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-box label,
+.sidebar-box h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.sidebar-box input {
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  font-size: 0.95rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.sidebar-box input:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.sidebar-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.sidebar-divider {
+  border: 0;
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+
+.sidebar-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Top-level Navigation Header Architecture Setup mapping controls layouts */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--primary);
+  color: #fff;
+  padding: 20px 28px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: background var(--transition);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  font-size: 2.5rem;
+}
+
+.header-left h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 0.82rem;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+}
+
+.theme-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Beautiful Interactive Custom Theme Toggle Switch Elements Controls Layer UI */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  transition: background var(--transition);
+}
+
+.slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 4px;
+  top: 4px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform var(--transition);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.toggle-switch input:checked + .slider {
+  background: var(--success);
+}
+
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+/* Metric Statistics Dashboard Section Grid Cards Blueprint Architecture layouts */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--primary-light);
+}
+
+.card.accent::before  { background: var(--accent); }
+.card.highlight::before { background: var(--highlight); }
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.08), 0 8px 16px -8px rgba(0, 0, 0, 0.08);
+}
+
+.card-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.card-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  transition: color var(--transition);
+}
+
+.card.accent .card-value  { color: var(--accent); }
+.card.highlight .card-value { color: var(--highlight); }
+
+/* Progress Meter System Bars Blueprint components classes layer elements styles */
+.progress-section {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  box-shadow: var(--shadow);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+#progressPercent {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.progress-bar-track {
+  background: var(--primary-soft);
+  border-radius: 50px;
+  height: 14px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary-light), var(--highlight));
+  border-radius: 50px;
+  transition: width 0.6s cubic-bezier(0.1, 0.8, 0.3, 1), background var(--transition);
+}
+
+.progress-bar-fill.danger {
+  background: linear-gradient(90deg, #f97316, #ef4444);
+}
+
+/* Functional Entry Input Forms Section Substructures Core Framework Engine */
+.form-section {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 20px;
+  transition: color var(--transition);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.form-group input,
+.form-group select {
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--bg);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+  background: #fff;
+}
+
+.form-group input.invalid {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.error-msg {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+  min-height: 18px;
+  margin-top: 2px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* System Global Adaptive Button Components Layer styling layout blueprint rules */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, background var(--transition);
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--primary-light);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+}
+
+.btn-primary:hover {
+  background: var(--primary);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+}
+
+.btn-secondary {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.btn-secondary:hover {
+  background: var(--border);
+}
+.btn-secondary.active {
+  background: #1e293b;
+  color: #fff;
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+
+.btn-danger:hover {
+  background: var(--accent-soft);
+}
+
+/* Master Data Ledger Reporting Tables Design Blocks Layout Interface UI Elements */
+.table-section {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.search-input {
+  padding: 10px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  width: 280px;
+  transition: border-color var(--transition), box-shadow var(--transition), width 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+  background: #fff;
+  width: 320px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  text-align: left;
+}
+
+thead tr {
+  background: var(--primary-soft);
+}
+
+th {
+  padding: 14px 18px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+  animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--bg); }
+
+td {
+  padding: 14px 18px;
+  color: var(--text);
+  vertical-align: middle;
+}
+
+.td-amount {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.td-index {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.td-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.category-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn-delete {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Master Data Ledger Empty State Handling Canvas Components rules */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 24px;
+  gap: 12px;
+  color: var(--text-muted);
+  background: #fff;
+}
+
+.empty-state span { font-size: 3rem; }
+.empty-state p { font-size: 0.95rem; font-weight: 500; }
+
+/* Interactive Flash Action Alert Toast Notifications Layer layout blocks components */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0f172a;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 10000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Ambient Environment Particle Space Layer Canvas Generation Rules mapping styles */
+.stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+/* Global Hardware Optimized Graphic CSS Animations Keyframes Modules definitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.4); }
+}
+
+/* ------------------------------------------------------------------------- */
+/* ADVANCED ADAPTIVE RESPONSIVE CSS MEDIA QUERY ENGINE BREAKER GRID BLUEPRINTS */
+/* ------------------------------------------------------------------------- */
+
+/* Tablet Optimization Layout (Collapsing Double Main Structural Grid columns into single stream layout) */
+@media (max-width: 960px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 16px;
+  }
+
+  .sidebar {
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+
+  .sidebar-box {
+    flex-direction: row;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .sidebar-box > * {
+    flex: 1 1 200px;
+  }
+  
+  .sidebar-btn {
+    width: auto;
+  }
+}
+
+/* Mobile Screen Breakpoint Optimization Layout */
+@media (max-width: 720px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .table-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input { 
+    width: 100%; 
+  }
+  
+  .search-input:focus {
+    width: 100%;
+  }
+}
+
+/* Extremely Small Smart Mobile Screen Display Optimization Layout rule overrides */
+@media (max-width: 480px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .card-value { 
+    font-size: 1.5rem; 
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
